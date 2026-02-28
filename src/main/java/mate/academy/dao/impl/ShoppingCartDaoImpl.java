@@ -43,6 +43,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
                             "SELECT sc DISTINCT "
                             + "FROM ShoppingCart sc "
                             + "LEFT JOIN FETCH sc.tickets "
+                            + "LEFT JOIN FETCH sc.user "
                             + "WHERE sc.user = :user", ShoppingCart.class);
             getShoppingCartByUserQuery.setParameter("user", user);
             return getShoppingCartByUserQuery.uniqueResultOptional();
